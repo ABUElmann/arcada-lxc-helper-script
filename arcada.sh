@@ -4,7 +4,7 @@
 # Author: ChatGPT für PVE Community Scripts
 # Description: Erstellt einen LXC-Container mit Arcada (virtuelle Raumplanung) auf Port 3000
 
-set -e
+set -euo pipefail
 
 # ----- Konfiguration -----
 CTID=${CTID:-8001}
@@ -19,7 +19,8 @@ IMG_URL="https://cloud-images.ubuntu.com/releases/jammy/release/ubuntu-22.04-ser
 
 # ----- Funktionen -----
 function msg() {
-  echo -e "\e[1;32m==> $1\e[0m"
+  local message="${1:-}"
+  echo -e "\e[1;32m==> $message\e[0m"
 }
 
 # ----- Container erstellen -----
